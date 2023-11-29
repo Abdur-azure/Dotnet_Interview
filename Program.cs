@@ -7,6 +7,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        BenchmarkRunner.Run<StringAppendixBenchmark>();
+        BenchmarkRunner.Run<StringAppendBenchmark>();
     }
 }
