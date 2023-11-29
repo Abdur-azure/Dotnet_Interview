@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Dotnet_Interview.csproj": {}
+    "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Abdur-azure\\Dotnet_Interview\\Dotnet_Interview.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Dotnet_Interview.csproj": {
+    "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Abdur-azure\\Dotnet_Interview\\Dotnet_Interview.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Dotnet_Interview.csproj",
+        "projectUniqueName": "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Abdur-azure\\Dotnet_Interview\\Dotnet_Interview.csproj",
         "projectName": "Dotnet_Interview",
-        "projectPath": "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Dotnet_Interview.csproj",
+        "projectPath": "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Abdur-azure\\Dotnet_Interview\\Dotnet_Interview.csproj",
         "packagesPath": "C:\\Users\\Abdur Rahman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\obj\\",
+        "outputPath": "C:\\Users\\Abdur Rahman\\source\\repos\\Dotnet_Interview\\Abdur-azure\\Dotnet_Interview\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

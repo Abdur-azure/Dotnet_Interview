@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dotnet_Interview.Interview
 {
-    public class StringAppendixBenchmark
+    public class StringAppendBenchmark
     {
         [Params(1, 10, 100)]
         public int N;
