@@ -7,6 +7,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        BenchmarkRunner.Run<StringAppendBenchmark>();
+        //BenchmarkRunner.Run<StringAppendBenchmark>();
+        //BenchmarkRunner.Run<LinkedListAddBenchMark>();
+        BenchmarkRunner.Run<EncryptionBenchMark>();
     }
 }
