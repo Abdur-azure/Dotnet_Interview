@@ -11,4 +11,8 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.13.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interview\" />
+  </ItemGroup>
+
 </Project>

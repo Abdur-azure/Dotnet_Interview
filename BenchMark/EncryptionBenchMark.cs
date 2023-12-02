@@ -1,19 +1,24 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
 using System.Security.Cryptography;
 
 namespace Dotnet_Interview.Interview
 {
+    //[SimpleJob(RuntimeMoniker.Net70, baseline: true)]
+    //[SimpleJob(RuntimeMoniker.Net80)]
+    //[RPlotExporter]
     public class EncryptionBenchMark
     {
-        [Params(1, 10, 100)]
+        private SHA256 sha256 = SHA256.Create();
+        private MD5 md5 = MD5.Create();
+        private byte[] data;
+
+        [Params(1000, 10000)]
         public int N;
-        private readonly byte[] data;
 
-        private readonly SHA256 sha256 = SHA256.Create();
-        private readonly MD5 md5 = MD5.Create();
-
-        public EncryptionBenchMark()
+        [GlobalSetup]
+        public void Setup()
         {
             data = new byte[N];
             new Random(42).NextBytes(data);
@@ -24,6 +29,6 @@ namespace Dotnet_Interview.Interview
 
         [Benchmark]
         public byte[] Md5() => md5.ComputeHash(data);
-        
     }
+
 }
