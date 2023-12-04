@@ -16,7 +16,8 @@ namespace Dotnet_Interview.Refactoring
 
             if (carryOn > 0)
             {
-                Console.WriteLine($"Carry-on: {carryOn * 30M}");
+                decimal v = carryOn * 30M;
+                Console.WriteLine($"Carry-on: {v}");
                 total += carryOn * 30M;
             }
 
