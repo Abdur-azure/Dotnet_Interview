@@ -8,6 +8,10 @@ namespace Dotnet_Interview.Refactoring
 {
     public class RefactorBaggageCalculator
     {
+        private const decimal FirstBagFee = 40M;
+        private const decimal CarryOnFee = 30M;
+        private const decimal ExtraBagFee = 50M;
+
         public decimal HolidayFeePercent { get; set; } = 0.1m;
 
         public decimal CalculatePrice(int bags, int carryOn, int passengers, DateTime travelTime)
@@ -16,22 +20,25 @@ namespace Dotnet_Interview.Refactoring
 
             if (carryOn > 0)
             {
-                decimal v = carryOn * 30M;
+                decimal v = carryOn * CarryOnFee;
                 Console.WriteLine($"Carry-on: {v}");
-                total += carryOn * 30M;
+                total += v;
             }
 
             if (bags > 0)
             {
                 if (bags <= passengers)
                 {
-                    Console.WriteLine($"Carry-on: {bags * 40M}");
-                    total += bags * 40M;
+                    decimal firstBagFee = bags * FirstBagFee;
+                    Console.WriteLine($"Carry-on: {firstBagFee}");
+                    total += firstBagFee;
                 }
 
                 else
                 {
-                    decimal checkedFee = (passengers * 40M) + ((bags - passengers) * 50M);
+                    decimal firstBagFee = passengers * FirstBagFee;
+                    decimal extraBagFee = (bags - passengers) * ExtraBagFee;
+                    decimal checkedFee = firstBagFee + extraBagFee;
 
                     Console.WriteLine($"Checked: {checkedFee}");
                     total += checkedFee;
@@ -40,8 +47,9 @@ namespace Dotnet_Interview.Refactoring
 
             if (travelTime.Month >= 11 || travelTime.Month <= 2)
             {
-                Console.WriteLine("Holiday Fee: " + (total * HolidayFeePercent));
-                total += total * HolidayFeePercent;
+                decimal holidayFee = total * HolidayFeePercent;
+                Console.WriteLine("Holiday Fee: " + holidayFee);
+                total += holidayFee;
             }
 
             return total;
