@@ -14,7 +14,7 @@ namespace Dotnet_Interview.Refactoring
 
         public decimal HolidayFeePercent { get; set; } = 0.1m;
 
-        public decimal CalculatePrice(int bags, int carryOn, int passengers, DateTime travelTime)
+        public decimal CalculatePrice(int bags, int carryOn, int passengers, DateTime travelTime, bool isHoliday)
         {
             decimal total = 0;
 
@@ -45,7 +45,7 @@ namespace Dotnet_Interview.Refactoring
                 }
             }
 
-            if (travelTime.Month >= 11 || travelTime.Month <= 2)
+            if (isHoliday)
             {
                 decimal holidayFee = total * HolidayFeePercent;
                 Console.WriteLine("Holiday Fee: " + holidayFee);

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dotnet_Interview")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+985c0db0e9425b34011ae6006882e6adb6667084")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dotnet_Interview")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dotnet_Interview")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
