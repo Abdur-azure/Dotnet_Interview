@@ -14,7 +14,7 @@ namespace Dotnet_Interview.Refactoring
 
         public decimal HolidayFeePercent { get; set; } = 0.1m;
 
-        public decimal CalculatePrice(int bags, int carryOn, int passengers, DateTime travelTime, bool isHoliday)
+        public decimal CalculatePrice(int bags, int carryOn, int passengers, bool isHoliday)
         {
             decimal total = 0;
 
@@ -27,22 +27,9 @@ namespace Dotnet_Interview.Refactoring
 
             if (bags > 0)
             {
-                if (bags <= passengers)
-                {
-                    decimal firstBagFee = bags * FirstBagFee;
-                    Console.WriteLine($"Carry-on: {firstBagFee}");
-                    total += firstBagFee;
-                }
-
-                else
-                {
-                    decimal firstBagFee = passengers * FirstBagFee;
-                    decimal extraBagFee = (bags - passengers) * ExtraBagFee;
-                    decimal checkedFee = firstBagFee + extraBagFee;
-
-                    Console.WriteLine($"Checked: {checkedFee}");
-                    total += checkedFee;
-                }
+                decimal bagFee = ApplyCheckedBagFee(bags, passengers);
+                Console.WriteLine($"Checked: {bagFee}");
+                total += bagFee;
             }
 
             if (isHoliday)
@@ -53,6 +40,23 @@ namespace Dotnet_Interview.Refactoring
             }
 
             return total;
+        }
+
+        private static decimal ApplyCheckedBagFee(int bags, int passengers)
+        {
+            if (bags <= passengers)
+            {
+                decimal firstBagFee = bags * FirstBagFee;
+                return firstBagFee;
+            }
+
+            else
+            {
+                decimal firstBagFee = passengers * FirstBagFee;
+                decimal extraBagFee = (bags - passengers) * ExtraBagFee;
+                decimal checkedFee = firstBagFee + extraBagFee;
+                return checkedFee;
+            }
         }
 
         private decimal CalculatePriceFlat(int numBags)
