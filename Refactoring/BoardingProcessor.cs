@@ -8,6 +8,7 @@ namespace Dotnet_Interview.Refactoring
 {
     public class BoardingProcessor
     {
+
         public int CurrentBoardingGroup { get; set; } = 2;
         public BoardingStatus Status { get; set; }
         private int[] _priorityLaneGroups = new[] { 1, 2 };
@@ -23,6 +24,8 @@ namespace Dotnet_Interview.Refactoring
                     filteredPassengers.Add(p);
                 }
             }
+
+            DisplayBoardingHeader();
 
             foreach (Passenger passenger in filteredPassengers)
             {
@@ -109,6 +112,7 @@ namespace Dotnet_Interview.Refactoring
                 return "Flight Departed";
             }
         }
+
     }
 }
 

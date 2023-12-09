@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dotnet_Interview.Refactoring
 {
-    public class BoardingProcessor
+    public class RefactorBoardingProcessor
     {
         public int CurrentBoardingGroup { get; set; } = 2;
         public BoardingStatus Status { get; set; }
@@ -71,42 +71,25 @@ namespace Dotnet_Interview.Refactoring
             bool needsHelp = passenger.NeedsHelp;
             int group = passenger.BoardingGroup;
 
-            if (Status != BoardingStatus.PlaneDeparted)
+            if (Status == BoardingStatus.PlaneDeparted)
             {
-                if (isMilitary && Status == BoardingStatus.Boarding)
+                return "Flight Departed";
+            }
+            if(Status == BoardingStatus.Boarding)
+            {
+                if (isMilitary || needsHelp)
                 {
                     return "Board Now via Priority Lane";
                 }
-                else if (needsHelp && Status == BoardingStatus.Boarding)
-                {
-                    return "Board Now via Priority Lane";
-                }
-                else if (Status == BoardingStatus.Boarding)
-                {
-                    if (CurrentBoardingGroup >= group)
-                    {
-                        if (_priorityLaneGroups.Contains(group))
-                        {
-                            return "Board Now via Priority Lane";
-                        }
-                        else
-                        {
-                            return "Board Now";
-                        }
-                    }
-                    else
-                    {
-                        return "Please Wait";
-                    }
-                }
-                else
-                {
-                    return "Boarding Not Started";
-                }
+                return CurrentBoardingGroup < group
+                    ? "Please Wait"
+                    : _priorityLaneGroups.Contains(group) ?
+                    "Board Now via Priority Lane" :
+                    "Board Now";
             }
             else
             {
-                return "Flight Departed";
+                return "Boarding Not Started";                
             }
         }
     }

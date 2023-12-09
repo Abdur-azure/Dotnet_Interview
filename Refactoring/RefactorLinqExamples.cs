@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dotnet_Interview.Refactoring
 {
-    public class LinqExamples
+    public class RefactorLinqExamples
     {
 
         public void UseCorrectMethods()
