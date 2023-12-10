@@ -71,25 +71,24 @@ namespace Dotnet_Interview.Refactoring
             bool needsHelp = passenger.NeedsHelp;
             int group = passenger.BoardingGroup;
 
-            if (Status == BoardingStatus.PlaneDeparted)
+            switch (Status)
             {
-                return "Flight Departed";
-            }
-            if(Status == BoardingStatus.Boarding)
-            {
-                if (isMilitary || needsHelp)
-                {
-                    return "Board Now via Priority Lane";
-                }
-                return CurrentBoardingGroup < group
-                    ? "Please Wait"
-                    : _priorityLaneGroups.Contains(group) ?
-                    "Board Now via Priority Lane" :
-                    "Board Now";
-            }
-            else
-            {
-                return "Boarding Not Started";                
+                case BoardingStatus.PlaneDeparted:
+                    return "Flight Departed";
+                case BoardingStatus.Boarding:
+                    if (isMilitary || needsHelp)
+                    {
+                        return "Board Now via Priority Lane";
+                    }
+                    return CurrentBoardingGroup < group
+                        ? "Please Wait"
+                        : _priorityLaneGroups.Contains(group) ?
+                        "Board Now via Priority Lane" :
+                        "Board Now";
+                case BoardingStatus.NotStarted:
+                    return "Boarding Not Started";
+                default:
+                    throw new NotSupportedException($"Unsupported: {Status}");
             }
         }
     }
