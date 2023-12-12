@@ -187,3 +187,8 @@ C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview
 C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview\obj\Release\net8.0\Dotnet_Interview.pdb
 C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview\obj\Release\net8.0\Dotnet_Interview.genruntimeconfig.cache
 C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview\obj\Release\net8.0\ref\Dotnet_Interview.dll
+C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview\bin\Release\net8.0\Bogus.dll
+C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview\bin\Release\net8.0\xunit.abstractions.dll
+C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview\bin\Release\net8.0\xunit.assert.dll
+C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview\bin\Release\net8.0\xunit.core.dll
+C:\Users\Abdur Rahman\source\repos\Dotnet_Interview\Abdur-azure\Dotnet_Interview\bin\Release\net8.0\xunit.execution.dotnet.dll

@@ -61,11 +61,7 @@ namespace Dotnet_Interview.Refactoring
 
         private decimal CalculatePriceFlat(int numBags)
         {
-            decimal total = 0;
-
             return 100M;
-
-            return numBags * 50M;
         }
 
     }

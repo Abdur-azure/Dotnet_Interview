@@ -46,7 +46,15 @@
           "dependencies": {
             "BenchmarkDotNet": {
               "target": "Package",
-              "version": "[0.13.10, )"
+              "version": "[0.13.11, )"
+            },
+            "Bogus": {
+              "target": "Package",
+              "version": "[34.0.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.6.3, )"
             }
           },
           "imports": [

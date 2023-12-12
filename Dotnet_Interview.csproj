@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.10" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.11" />
+    <PackageReference Include="Bogus" Version="34.0.2" />
+    <PackageReference Include="xunit" Version="2.6.3" />
   </ItemGroup>
 
   <ItemGroup>
