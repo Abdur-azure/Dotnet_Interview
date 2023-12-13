@@ -13,8 +13,4 @@
     <PackageReference Include="xunit" Version="2.6.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interview\" />
-  </ItemGroup>
-
 </Project>
