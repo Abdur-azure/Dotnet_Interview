@@ -15,15 +15,8 @@ namespace Dotnet_Interview.Refactoring
         public void DisplayBoardingStatus(List<Passenger> passengers, bool? hasBoarded = null)
         {
             List<Passenger> filteredPassengers = new();
-            for (int i = 0; i < passengers.Count; i++)
-            {
-                Passenger p = passengers[i];
-                if (!hasBoarded.HasValue || p.HasBoarded == hasBoarded)
-                {
-                    filteredPassengers.Add(p);
-                }
-            }
-
+            filteredPassengers.AddRange(passengers.
+                Where(p => !hasBoarded.HasValue || p.HasBoarded == hasBoarded));
             foreach (Passenger passenger in filteredPassengers)
             {
                 string statusMessage = passenger.HasBoarded
