@@ -14,9 +14,9 @@ namespace Dotnet_Interview.Refactoring
             PassengerGenerator generator = new();
             List<Passenger> people = generator.GeneratePassengers(50);
 
-            Passenger author = people.FirstOrDefault(p => p.FullName == "Matt Eland");
+            Passenger me = people.FirstOrDefault(p => p.FullName == "Matt Eland");
 
-            Console.WriteLine($"{author.FullName} is group {author.BoardingGroup}");
+            Console.WriteLine($"{me.FullName} is group {me.BoardingGroup}");
         }
 
         public void CombineLinqMethods()
@@ -25,11 +25,11 @@ namespace Dotnet_Interview.Refactoring
             List<Passenger> people = generator.GeneratePassengers(50);
 
             bool anyBoarded =
-              people.Where(p => p.HasBoarded).Any();
+              people.Any(p => p.HasBoarded);
             int numBoarded =
-              people.Where(p => p.HasBoarded).Count();
+              people.Count(p => p.HasBoarded);
             Passenger firstBoarded =
-              people.Where(p => p.HasBoarded).First();
+              people.First(p => p.HasBoarded);
         }
 
         public void TransformingWithSelect()
@@ -38,13 +38,8 @@ namespace Dotnet_Interview.Refactoring
             List<Passenger> people = generator.GeneratePassengers(50);
 
             List<string> names = new();
-            foreach (Passenger p in people)
-            {
-                if (!p.HasBoarded)
-                {
-                    names.Add($"{p.FullName}-{p.BoardingGroup}");
-                }
-            }
+            names.AddRange(people.Where(p => !p.HasBoarded)
+                .Select(p => $"{p.FullName}-{p.BoardingGroup}"));
         }
 
         public void EnumeratingWithTakeAndSkip()

@@ -14,10 +14,13 @@ namespace Dotnet_Interview.Refactoring
 
         public void DisplayBoardingStatus(List<Passenger> passengers, bool? hasBoarded = null)
         {
-            List<Passenger> filteredPassengers = new();
+            passengers = passengers.Where(p => !hasBoarded.HasValue 
+            || p.HasBoarded == hasBoarded)
+                .ToList();
+            /*List<Passenger> filteredPassengers = new();
             filteredPassengers.AddRange(passengers.
-                Where(p => !hasBoarded.HasValue || p.HasBoarded == hasBoarded));
-            foreach (Passenger passenger in filteredPassengers)
+                Where(p => !hasBoarded.HasValue || p.HasBoarded == hasBoarded));*/
+            foreach (Passenger passenger in passengers)
             {
                 string statusMessage = passenger.HasBoarded
                   ? "Onboard"

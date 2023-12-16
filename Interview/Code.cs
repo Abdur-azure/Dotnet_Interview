@@ -108,7 +108,7 @@ namespace Dotnet_Interview.Interview
             return '\0'; // No non-repeating character found
         }
 
-        public class QueueUsingStacks<T>
+        /*public class QueueUsingStacks<T>
         {
             private Stack<T> stack1 = new Stack<T>();
             private Stack<T> stack2 = new Stack<T>();
@@ -130,7 +130,7 @@ namespace Dotnet_Interview.Interview
             }
 
             public bool IsEmpty => stack1.Count == 0;
-        }
+        }*/
 
         public class ListNode
         {
@@ -152,7 +152,7 @@ namespace Dotnet_Interview.Interview
             return prev;
         }
 
-        bool AreParenthesesBalanced(string expression)
+        /*bool AreParenthesesBalanced(string expression)
         {
             var stack = new Stack<char>();
             foreach (char c in expression)
@@ -167,7 +167,7 @@ namespace Dotnet_Interview.Interview
                     return false;
             }
             return stack.Count == 0;
-        }
+        }*/
 
         ListNode FindIntersection(ListNode head1, ListNode head2)
         {
