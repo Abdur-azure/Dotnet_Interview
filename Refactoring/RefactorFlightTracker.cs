@@ -65,14 +65,14 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        public Flight? MarkFlightDeparted(string id, DateTime t)
+        public Flight? MarkFlightDeparted(string id, DateTime time)
         {
             Flight? flight = FindFlightById(id);
             if (flight != null)
             {
-                flight.DepartureTime = t;
+                flight.DepartureTime = time;
                 flight.Status = FlightStatus.Departed;
-                Console.WriteLine($"{id} departed at {Format(t)}.");
+                Console.WriteLine($"{id} departed at {Format(time)}.");
             }
             else
             {
