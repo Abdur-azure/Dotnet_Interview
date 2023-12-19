@@ -47,7 +47,7 @@ class Program
         //boardingProcessor.DisplayBoardingStatus(passengers.ToList());
 
         //Flight Tracker
-        FlightTracker flightTracker = new();
+        RefactorFlightTracker refactorFlightTracker = new();
 
             Random rand = new();
             string[] destinations = { "CMH", "ATL", "MCI", "CLT", "SAN", "ORD", "CHS", "PNS" };
@@ -59,7 +59,7 @@ class Program
             {
                 nextFlightTime = nextFlightTime.AddMinutes(rand.Next(1, 25));
 
-                AddRandomFlight(flightTracker, rand, destinations, gates, nextId, nextFlightTime);
+                AddRandomFlight(refactorFlightTracker, rand, destinations, gates, nextId, nextFlightTime);
 
                 nextId += rand.Next(1, 7);
             }
@@ -67,14 +67,14 @@ class Program
             Console.WriteLine();
             Console.WriteLine("FLIGHT    DEST  DEPARTURE             GATE  STATUS");
             Console.WriteLine();
-            flightTracker.DisplayFlights();
+            refactorFlightTracker.DisplayFlights();
         }
 
-        private static void AddRandomFlight(FlightTracker flightTracker, Random rand, string[] destinations, string[] gates, int nextId, DateTime nextFlightTime)
+        private static void AddRandomFlight(RefactorFlightTracker refactorFlightTracker, Random rand, string[] destinations, string[] gates, int nextId, DateTime nextFlightTime)
         {
             string dest = destinations[rand.Next(destinations.Length)];
             string gate = gates[rand.Next(gates.Length)];
-            Flight flight = flightTracker.ScheduleNewFlight($"CSA{nextId}", dest, nextFlightTime, gate);
+            Flight flight = refactorFlightTracker.ScheduleNewFlight($"CSA{nextId}", dest, nextFlightTime, gate);
 
             _ = rand.Next(8) switch
             {

@@ -20,6 +20,11 @@ namespace Dotnet_Interview.Refactoring
                 Gate = gate,
                 Status = FlightStatus.Inbound
             };
+            return ScheduleNewFlight(flight);
+        }
+
+        public Flight ScheduleNewFlight(Flight flight)
+        {
             _flights.Add(flight);
             return flight;
         }
@@ -32,15 +37,15 @@ namespace Dotnet_Interview.Refactoring
             }
         }
 
-        public Flight? DelayFlight(string fId, DateTime newTime)
+        public Flight? DelayFlight(string fId, DateTime newDepartureTime)
         {
             Flight? flight = FindFlightById(fId);
 
             if (flight != null)
             {
-                flight.DepartureTime = newTime;
+                flight.DepartureTime = newDepartureTime;
                 flight.Status = FlightStatus.Delayed;
-                Console.WriteLine($"{fId} delayed until {Format(newTime)}");
+                Console.WriteLine($"{fId} delayed until {Format(newDepartureTime)}");
             }
             else
             {
@@ -49,14 +54,14 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        public Flight? MarkFlightArrived(DateTime time, string id)
+        public Flight? MarkFlightArrived(DateTime arrivalTime, string id)
         {
             Flight? flight = FindFlightById(id);
             if (flight != null)
             {
-                flight.ArrivalTime = time;
+                flight.ArrivalTime = arrivalTime;
                 flight.Status = FlightStatus.OnTime;
-                Console.WriteLine($"{id} arrived at {Format(time)}.");
+                Console.WriteLine($"{id} arrived at {Format(arrivalTime)}.");
             }
             else
             {
@@ -65,14 +70,14 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        public Flight? MarkFlightDeparted(string id, DateTime time)
+        public Flight? MarkFlightDeparted(string id, DateTime departureTime)
         {
             Flight? flight = FindFlightById(id);
             if (flight != null)
             {
-                flight.DepartureTime = time;
+                flight.DepartureTime = departureTime;
                 flight.Status = FlightStatus.Departed;
-                Console.WriteLine($"{id} departed at {Format(time)}.");
+                Console.WriteLine($"{id} departed at {Format(departureTime)}.");
             }
             else
             {
