@@ -8,22 +8,19 @@ namespace Dotnet_Interview.Refactoring
 {
     public class RefactorFlightTracker
     {
-        private readonly List<Flight> _flights = new();
+        private readonly List<RefactorFlight> _flights = new();
 
-        public Flight ScheduleNewFlight(string id, string dest, DateTime depart, string gate)
+        public RefactorFlight ScheduleNewFlight(string id, string dest, DateTime depart, string gate)
         {
-            Flight flight = new()
+            RefactorFlight refactorFlight = new(id,dest, depart)
             {
-                Id = id,
-                Destination = dest,
-                DepartureTime = depart,
                 Gate = gate,
                 Status = FlightStatus.Inbound
             };
-            return ScheduleNewFlight(flight);
+            return ScheduleNewFlight(refactorFlight);
         }
 
-        public Flight ScheduleNewFlight(Flight flight)
+        public RefactorFlight ScheduleNewFlight(RefactorFlight flight)
         {
             _flights.Add(flight);
             return flight;
@@ -31,15 +28,15 @@ namespace Dotnet_Interview.Refactoring
 
         public void DisplayFlights()
         {
-            foreach (Flight f in _flights)
+            foreach (RefactorFlight f in _flights)
             {
                 Console.WriteLine($"{f.Id,-9} {f.Destination,-5} {Format(f.DepartureTime),-21} {f.Gate,-5} {f.Status}");
             }
         }
 
-        public Flight? DelayFlight(string fId, DateTime newDepartureTime)
+        public RefactorFlight? DelayFlight(string fId, DateTime newDepartureTime)
         {
-            Flight? flight = FindFlightById(fId);
+                RefactorFlight? flight = FindFlightById(fId);
 
             if (flight != null)
             {
@@ -54,9 +51,9 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        public Flight? MarkFlightArrived(DateTime arrivalTime, string id)
+        public RefactorFlight? MarkFlightArrived(DateTime arrivalTime, string id)
         {
-            Flight? flight = FindFlightById(id);
+            RefactorFlight? flight = FindFlightById(id);
             if (flight != null)
             {
                 flight.ArrivalTime = arrivalTime;
@@ -70,9 +67,9 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        public Flight? MarkFlightDeparted(string id, DateTime departureTime)
+        public RefactorFlight? MarkFlightDeparted(string id, DateTime departureTime)
         {
-            Flight? flight = FindFlightById(id);
+            RefactorFlight? flight = FindFlightById(id);
             if (flight != null)
             {
                 flight.DepartureTime = departureTime;
@@ -86,7 +83,7 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        private Flight? FindFlightById(string id)
+        private RefactorFlight? FindFlightById(string id)
         {
             return _flights.FirstOrDefault(f => f.Id == id);
         }
