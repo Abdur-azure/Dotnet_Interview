@@ -11,11 +11,11 @@ namespace Dotnet_Interview.RefactoringTest
 {
     public class FlightTrackerTests
     {
-        private readonly FlightTracker _target;
+        private readonly RefactorFlightTracker _target;
 
         public FlightTrackerTests()
         {
-            _target = new FlightTracker();
+            _target = new RefactorFlightTracker();
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Dotnet_Interview.RefactoringTest
             _target.ScheduleNewFlight(flightId, "New York", DateTime.Now, "A01");
 
             // Act
-            var actual = _target.MarkFlightArrived(arrivalTime, flightId);
+            var actual = _target.MarkFlightArrived(flightId, arrivalTime, "A4");
 
             // Assert
             Assert.NotNull(actual);

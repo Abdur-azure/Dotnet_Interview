@@ -51,13 +51,15 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        public RefactorFlight? MarkFlightArrived(DateTime arrivalTime, string id)
+        public RefactorFlight? MarkFlightArrived(string id,
+            DateTime arrivalTime, string gate = "TBD")
         {
             RefactorFlight? flight = FindFlightById(id);
             if (flight != null)
             {
                 flight.ArrivalTime = arrivalTime;
                 flight.Status = FlightStatus.OnTime;
+                flight.Gate = gate;
                 Console.WriteLine($"{id} arrived at {Format(arrivalTime)}.");
             }
             else
