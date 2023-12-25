@@ -74,7 +74,7 @@ class Program
         {
             string dest = destinations[rand.Next(destinations.Length)];
             string gate = gates[rand.Next(gates.Length)];
-            Flight flight = refactorFlightTracker.ScheduleNewFlight($"CSA{nextId}", dest, nextFlightTime, gate);
+            Flight flight = refactorFlightTracker.ScheduleNewFlight($"CSA{nextId}", dest, nextFlightTime);
 
             _ = rand.Next(8) switch
             {

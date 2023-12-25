@@ -10,11 +10,10 @@ namespace Dotnet_Interview.Refactoring
     {
         private readonly List<RefactorFlight> _flights = new();
 
-        public RefactorFlight ScheduleNewFlight(string id, string dest, DateTime depart, string gate)
+        public RefactorFlight ScheduleNewFlight(string id, string dest, DateTime depart)
         {
             RefactorFlight refactorFlight = new(id,dest, depart)
             {
-                Gate = gate,
                 Status = FlightStatus.Inbound
             };
             return ScheduleNewFlight(refactorFlight);

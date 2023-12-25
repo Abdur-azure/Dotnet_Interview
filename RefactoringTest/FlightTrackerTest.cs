@@ -28,7 +28,7 @@ namespace Dotnet_Interview.RefactoringTest
             var gate = "A02";
 
             // Act
-            var flight = _target.ScheduleNewFlight(flightId, destination, departureTime, gate);
+            var flight = _target.ScheduleNewFlight(flightId, destination, departureTime);
 
             // Assert
             /*flight.ShouldNotBeNull();
@@ -45,7 +45,7 @@ namespace Dotnet_Interview.RefactoringTest
             var flightId = "F01";
             var originalDepartureTime = DateTime.Now.AddHours(1);
             var newDepartureTime = DateTime.Now.AddHours(2);
-            _target.ScheduleNewFlight(flightId, "New York", originalDepartureTime, "A01");
+            _target.ScheduleNewFlight(flightId, "New York", originalDepartureTime);
 
             // Act
             var actual = _target.DelayFlight(flightId, newDepartureTime);
@@ -62,7 +62,7 @@ namespace Dotnet_Interview.RefactoringTest
             // Arrange
             var flightId = "F01";
             var arrivalTime = DateTime.Now.AddMinutes(15);
-            _target.ScheduleNewFlight(flightId, "New York", DateTime.Now, "A01");
+            _target.ScheduleNewFlight(flightId, "New York", DateTime.Now);
 
             // Act
             var actual = _target.MarkFlightArrived(flightId, arrivalTime, "A4");
@@ -80,7 +80,7 @@ namespace Dotnet_Interview.RefactoringTest
             var flightId = "F01";
             var originalDepartureTime = DateTime.Now;
             var departureTime = DateTime.Now.AddMinutes(15);
-            _target.ScheduleNewFlight(flightId, "New York", originalDepartureTime, "A01");
+            _target.ScheduleNewFlight(flightId, "New York", originalDepartureTime);
 
             // Act
             var actual = _target.MarkFlightDeparted(flightId, departureTime);
