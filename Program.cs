@@ -47,7 +47,7 @@ class Program
         //boardingProcessor.DisplayBoardingStatus(passengers.ToList());
 
         //Flight Tracker
-        RefactorFlightTracker refactorFlightTracker = new();
+        /*RefactorFlightTracker refactorFlightTracker = new();
 
             Random rand = new();
             string[] destinations = { "CMH", "ATL", "MCI", "CLT", "SAN", "ORD", "CHS", "PNS" };
@@ -67,14 +67,14 @@ class Program
             Console.WriteLine();
             Console.WriteLine("FLIGHT    DEST  DEPARTURE             GATE  STATUS");
             Console.WriteLine();
-            refactorFlightTracker.DisplayFlights();
+            refactorFlightTracker.DisplayMatchingFlights();
         }
 
         private static void AddRandomFlight(RefactorFlightTracker refactorFlightTracker, Random rand, string[] destinations, string[] gates, int nextId, DateTime nextFlightTime)
         {
             string dest = destinations[rand.Next(destinations.Length)];
             string gate = gates[rand.Next(gates.Length)];
-            Flight flight = refactorFlightTracker.ScheduleNewFlight($"CSA{nextId}", dest, nextFlightTime);
+            RefactorFlight flight = refactorFlightTracker.ScheduleNewFlight($"CSA{nextId}", dest, nextFlightTime);
 
             _ = rand.Next(8) switch
             {
@@ -82,6 +82,39 @@ class Program
                 1 => flight.Status = FlightStatus.Delayed,
                 2 => flight.Status = FlightStatus.Cancelled,
                 _ => flight.Status = FlightStatus.OnTime
+        };*/
+
+        //AirTravel
+        Airport dep = new()
+        {
+            Code = "DNA",
+            Country = "United States",
+            Name = "Dotnet Airport"
         };
+        Airport arr = new()
+        {
+            Code = "CSI",
+            Country = "United Kingdom",
+            Name = "C# International Airport"
+        };
+
+        FlightScheduler scheduler = new();
+        scheduler.ScheduleFlight("CS2001", dep, arr, DateTime.Now.AddMinutes(20), DateTime.Now.AddHours(6.5), 680);
+        scheduler.ScheduleFlight("CS2023", arr, dep, DateTime.Now.AddMinutes(-40), DateTime.Now.AddHours(6.1), 930);
+
+        Console.WriteLine();
+        Console.WriteLine("All Flights:");
+        foreach (IFlightInfo flight in scheduler.GetAllFlights())
+        {
+            Console.WriteLine(flight);
+        }
+
+        Console.WriteLine();
+        Console.WriteLine($"Flights to {arr.Name}:");
+        IEnumerable<IFlightInfo> filteredList = scheduler.Search(null, arr, null, null, null, null, null, null);
+        foreach (IFlightInfo flight in filteredList)
+        {
+            Console.WriteLine(flight);
+        }
     }
 }

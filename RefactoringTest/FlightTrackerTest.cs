@@ -48,7 +48,7 @@ namespace Dotnet_Interview.RefactoringTest
             _target.ScheduleNewFlight(flightId, "New York", originalDepartureTime);
 
             // Act
-            var actual = _target.DelayFlight(flightId, newDepartureTime);
+            var actual = _target.MarkFlightDelayed(flightId, newDepartureTime);
 
             // Assert
             Assert.NotNull(actual);

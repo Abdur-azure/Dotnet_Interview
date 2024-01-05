@@ -25,29 +25,24 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        public void DisplayFlights()
+        public void DisplayMatchingFlights(List<RefactorFlight> flights, Func<Flight, bool> shouldDisplay)
         {
-            foreach (RefactorFlight f in _flights)
+            foreach (RefactorFlight flight in flights)
             {
-                Console.WriteLine($"{f.Id,-9} {f.Destination,-5} {Format(f.DepartureTime),-21} {f.Gate,-5} {f.Status}");
+                Console.WriteLine(flight);
             }
         }
 
-        public RefactorFlight? DelayFlight(string fId, DateTime newDepartureTime)
+        public RefactorFlight? MarkFlightDelayed(string fId, DateTime newDepartureTime)
         {
-                RefactorFlight? flight = FindFlightById(fId);
-
-            if (flight != null)
+            Action<RefactorFlight> updateAction = (flight) =>
             {
                 flight.DepartureTime = newDepartureTime;
-                flight.Status = FlightStatus.Delayed;
-                Console.WriteLine($"{fId} delayed until {Format(newDepartureTime)}");
-            }
-            else
-            {
-                Console.WriteLine($"{fId} could not be found");
-            }
-            return flight;
+                flight.Status = FlightStatus.Inbound;
+                Console.WriteLine($"{fId} delayed to {DateHelpers.Format(newDepartureTime)}");
+            };
+
+            return UpdateFlight(fId, updateAction);
         }
 
         public RefactorFlight? MarkFlightArrived(string id,
@@ -57,9 +52,9 @@ namespace Dotnet_Interview.Refactoring
             if (flight != null)
             {
                 flight.ArrivalTime = arrivalTime;
-                flight.Status = FlightStatus.OnTime;
                 flight.Gate = gate;
-                Console.WriteLine($"{id} arrived at {Format(arrivalTime)}.");
+                flight.Status = FlightStatus.OnTime;
+                Console.WriteLine($"{id} arrived at {DateHelpers.Format(arrivalTime)}.");
             }
             else
             {
@@ -75,7 +70,7 @@ namespace Dotnet_Interview.Refactoring
             {
                 flight.DepartureTime = departureTime;
                 flight.Status = FlightStatus.Departed;
-                Console.WriteLine($"{id} departed at {Format(departureTime)}.");
+                Console.WriteLine($"{id} departed at {DateHelpers.Format(departureTime)}.");
             }
             else
             {
@@ -84,14 +79,21 @@ namespace Dotnet_Interview.Refactoring
             return flight;
         }
 
-        private RefactorFlight? FindFlightById(string id)
-        {
-            return _flights.FirstOrDefault(f => f.Id == id);
-        }
+        private RefactorFlight? FindFlightById(string id) => 
+            _flights.FirstOrDefault(f => f.Id == id);
 
-        public string Format(DateTime time)
+        private RefactorFlight? UpdateFlight(string id, Action<RefactorFlight> updateAction) 
         {
-            return time.ToString("ddd MMM dd HH:mm tt");
+            RefactorFlight? flight = FindFlightById(id);
+            if (flight != null)
+            {
+                updateAction(flight);
+            }
+            else 
+            {
+                Console.WriteLine($"{id} could not be found");
+            }
+            return flight;
         }
     }
 }
