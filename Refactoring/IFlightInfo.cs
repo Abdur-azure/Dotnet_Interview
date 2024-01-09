@@ -16,14 +16,8 @@ namespace Dotnet_Interview.Refactoring
         TimeSpan Duration { get; }
     }
 
-    public class FreightFlightInfo : IFlightInfo
+    public class FreightFlightInfo : FreightFlightInfoBase
     {
-        public string Id { get; set; }
-        public Airport DepartureLocation { get; set; }
-        public Airport ArrivalLocation { get; set; }
-        public DateTime DepartureTime { get; set; }
-        public DateTime ArrivalTime { get; set; }
-        public TimeSpan Duration => DepartureTime - ArrivalTime;
         public string CharterCompany { get; set; }
         public string Cargo { get; set; }
 

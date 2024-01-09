@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dotnet_Interview.Refactoring
 {
-    public partial class FlightScheduler
+    public partial class RefactorFlightScheduler
     {
         private readonly List<IFlightInfo> _flights = new();
 
